@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test API</title>
+</head>
+<body>
+    <h1>Test Data dari API</h1>
+    <button onclick="loadData()">Load Data</button>
+    <pre id="result"></pre>
+
+    <script>
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyF40EG1y5D9xjTM7Ml86tdfPmpLeHToeMUM1hpr1Pe9kPwZ3VYZXWTHYcvTo_0LI2sew/exec';
+        
+        async function loadData() {
+            try {
+                const response = await fetch(SCRIPT_URL);
+                const data = await response.json();
+                document.getElementById('result').textContent = JSON.stringify(data, null, 2);
+            } catch(error) {
+                document.getElementById('result').textContent = 'Error: ' + error;
+            }
+        }
+    </script>
+</body>
+</html>
